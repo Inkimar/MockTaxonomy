@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMockTaxonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMockTaxonLabel_id}"/>
+                    <h:outputText value="#{mockTaxonController.selected.id}" title="#{bundle.ViewMockTaxonTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewMockTaxonLabel_extUuid}"/>
+                    <h:outputText value="#{mockTaxonController.selected.extUuid}" title="#{bundle.ViewMockTaxonTitle_extUuid}"/>
+                    <h:outputText value="#{bundle.ViewMockTaxonLabel_commonName}"/>
+                    <h:outputText value="#{mockTaxonController.selected.commonName}" title="#{bundle.ViewMockTaxonTitle_commonName}"/>
+                    <h:outputText value="#{bundle.ViewMockTaxonLabel_scientificName}"/>
+                    <h:outputText value="#{mockTaxonController.selected.scientificName}" title="#{bundle.ViewMockTaxonTitle_scientificName}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mockTaxonController.destroyAndView}" value="#{bundle.ViewMockTaxonDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMockTaxonEditLink}"/>
+                <br />
+                <h:commandLink action="#{mockTaxonController.prepareCreate}" value="#{bundle.ViewMockTaxonCreateLink}" />
+                <br />
+                <h:commandLink action="#{mockTaxonController.prepareList}" value="#{bundle.ViewMockTaxonShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMockTaxonIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

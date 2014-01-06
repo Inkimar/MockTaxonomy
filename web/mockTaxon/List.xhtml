@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMockTaxonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMockTaxonEmpty}" rendered="#{mockTaxonController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{mockTaxonController.items.rowCount > 0}">
+                    <h:outputText value="#{mockTaxonController.pagination.pageFirstItem + 1}..#{mockTaxonController.pagination.pageLastItem + 1}/#{mockTaxonController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{mockTaxonController.previous}" value="#{bundle.Previous} #{mockTaxonController.pagination.pageSize}" rendered="#{mockTaxonController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{mockTaxonController.next}" value="#{bundle.Next} #{mockTaxonController.pagination.pageSize}" rendered="#{mockTaxonController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{mockTaxonController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMockTaxonTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMockTaxonTitle_extUuid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.extUuid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMockTaxonTitle_commonName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.commonName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMockTaxonTitle_scientificName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.scientificName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{mockTaxonController.prepareView}" value="#{bundle.ListMockTaxonViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mockTaxonController.prepareEdit}" value="#{bundle.ListMockTaxonEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mockTaxonController.destroy}" value="#{bundle.ListMockTaxonDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{mockTaxonController.prepareCreate}" value="#{bundle.ListMockTaxonCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMockTaxonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
