@@ -20,7 +20,8 @@ public class TestRestful {
 
     private Client client;
 
-    private static final String BASE_URI = "http://192.168.10.163:8080/TaxonMock-2014-B/webresources";
+    // BASE_URI = "http://172.16.23.12:8080/TaxonMock-2014-B/webresources";
+    private static final String BASE_URI = "http://172.16.23.12:8080/TaxonMock-2014-B/webresources";
 
     public TestRestful() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
