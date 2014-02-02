@@ -4,7 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-01-14T14:55:52")
+@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-02-02T18:00:05")
 @StaticMetamodel(MockTaxon.class)
 public class MockTaxon_ { 
 
